@@ -1,0 +1,2 @@
+INSERT INTO MEMBER(NO, EMAIL, PASSWORD) VALUES (MEMBER_NO_SEQ.nextval, 'puhahaha3000@naver.com', 'tiger');
+COMMIT;
