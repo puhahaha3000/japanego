@@ -1,0 +1,3 @@
+DROP USER japanego;
+CREATE USER japanego IDENTIFIED BY tiger;
+ALTER USER japanego DEFAULT ROLE "DBA", "CONNECT", "RESOURCE";
