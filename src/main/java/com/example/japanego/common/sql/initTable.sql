@@ -100,8 +100,8 @@ END;
 CREATE TABLE MEMBER
 (
     NO            NUMBER(10)                    NOT NULL,
-    EMAIL         VARCHAR2(50)                  NULL,
-    PASSWORD      VARCHAR2(20)                  NULL,
+    EMAIL         VARCHAR2(50)                  UNIQUE NOT NULL,
+    PASSWORD      VARCHAR2(20)                  NOT NULL,
     CREATE_DATE   DATE          DEFAULT SYSDATE NOT NULL,
     MODIFIED_DATE DATE          DEFAULT SYSDATE NOT NULL,
     DEL_FLAG      CHAR(1)       DEFAULT 0       NOT NULL,
