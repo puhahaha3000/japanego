@@ -1,6 +1,5 @@
 package com.example.japanego.vo;
 
-import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -11,7 +10,6 @@ import java.util.Collection;
 import java.util.List;
 
 @Slf4j
-@Setter
 public class MemberDetailsVo implements UserDetails {
 
     private String email;
@@ -24,6 +22,18 @@ public class MemberDetailsVo implements UserDetails {
         setPassword(memberVo.getPassword());
         setCertifyFlag(memberVo.getCertifyFlag());
         setAuthorities(memberVo);
+    }
+
+    private void setEmail(String email) {
+        this.email = email;
+    }
+
+    private void setPassword(String password) {
+        this.password = password;
+    }
+
+    private void setCertifyFlag(String certifyFlag) {
+        this.certifyFlag = certifyFlag;
     }
 
     @Override
