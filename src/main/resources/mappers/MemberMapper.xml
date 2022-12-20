@@ -6,10 +6,14 @@
 <mapper namespace="com.example.japanego.mapper.MemberMapper">
 
     <resultMap id="memberMap" type="MemberVo">
-        <id property="no" column="no" />
-        <result property="email" column="email" />
-        <result property="password" column="password" />
-        <result property="certifyFlag" column="certify_flag" />
+        <id property="no" column="NO" />
+        <result property="email" column="EMAIL" />
+        <result property="password" column="PASSWORD" />
+        <result property="createDate" column="CREATE_DATE" />
+        <result property="modifiedDate" column="MODIFIED_DATE" />
+        <result property="delFlag" column="DEL_FLAG" />
+        <result property="certifyFlag" column="CERTIFY_FLAG" />
+        <result property="grade" column="GRADE" />
         <collection property="authVoList" resultMap="authMap"/>
     </resultMap>
 
