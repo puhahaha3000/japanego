@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.japanego.mapper.MemberMapper">
+
+    <resultMap id="memberMap" type="MemberVo">
+        <id property="no" column="no" />
+        <result property="email" column="email" />
+        <result property="password" column="password" />
+        <result property="certifyFlag" column="certify_flag" />
+        <collection property="authVoList" resultMap="authMap"/>
+    </resultMap>
+
+    <resultMap id="authMap" type="AuthVo">
+        <result property="memberNo" column="member_no"/>
+        <result property="authority" column="authority"/>
+    </resultMap>
+
+    <select id="getMember" resultMap="memberMap">
+        <![CDATA[
+            SELECT *
+            FROM MEMBER M, AUTHORITIES A
+            WHERE EMAIL = #{email}
+                AND NO = MEMBER_NO
+        ]]>
+    </select>
+
+</mapper>
