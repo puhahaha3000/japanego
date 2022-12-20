@@ -16,10 +16,4 @@ class MemberMapperTest {
         MemberVo memberVo = memberMapper.getMember("test@test.com");
         System.out.println(memberVo);
     }
-
-    @Test
-    void insertMember() {
-
-    }
-
 }

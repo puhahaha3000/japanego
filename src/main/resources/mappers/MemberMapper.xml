@@ -23,7 +23,7 @@
             SELECT *
             FROM MEMBER M, AUTHORITIES A
             WHERE EMAIL = #{email}
-                AND NO = MEMBER_NO
+                AND NO = MEMBER_NO(+)
         ]]>
     </select>
 

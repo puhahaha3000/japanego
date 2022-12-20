@@ -18,6 +18,6 @@ Index Page<br>
   <p>principal: <sec:authentication property="principal.username"/> 님 환영합니다</p>
   [<a href="<c:url value="/logout"/>">로그아웃</a>]<br>
 </sec:authorize>
-  [<a href="<c:url value="/sign_up_view"/>">로그아웃</a>]
+  [<a href="<c:url value="/sign_up_view"/>">회원가입</a>]
 </body>
 </html>
