@@ -5,6 +5,7 @@ import com.example.japanego.service.MemberService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,5 +32,11 @@ public class MemberController {
         model.addAttribute("memberNo", memberNo);
         model.addAttribute("email", email);
         return "authenticate";
+    }
+
+    @GetMapping("/update_view")
+    public String updateView() {
+        log.info("updateView()...");
+        return "member/update_view";
     }
 }

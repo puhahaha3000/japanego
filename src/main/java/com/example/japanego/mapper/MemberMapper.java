@@ -19,6 +19,9 @@ public interface MemberMapper {
     @Select("SELECT NO FROM MEMBER WHERE EMAIL = #{email}")
     int getNo(String email);
 
-    @Update("UPDATE MEMBER SET CERTIFY_FLAG='1' WHERE NO = #{memberNo}")
+    @Update("UPDATE MEMBER SET CERTIFY_FLAG = '1' WHERE NO = #{memberNo}")
     void updateEnable(int memberNo);
+
+    @Update("UPDATE MEMBER SET PASSWORD = #{password} WHERE NO = #{no}")
+    int updateMember(int no, String password);
 }

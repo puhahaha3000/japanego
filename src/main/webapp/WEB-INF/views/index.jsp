@@ -18,6 +18,7 @@ Index Page<br>
 <sec:authorize access="isAuthenticated()">
   <p>principal: <sec:authentication property="principal"/></p>
   <p>principal: <sec:authentication property="principal.username"/> 님 환영합니다</p>
+  [<a href="<c:url value="/member/update_view"/>">정보 수정</a>]<br>
   [<a href="<c:url value="/logout"/>">로그아웃</a>]<br>
   [<a href="<c:url value="/first_quiz"/>">첫 퀴즈</a>]<br>
 </sec:authorize>

@@ -8,4 +8,6 @@ public interface MemberService {
     int getNo(String email);
 
     void enableMember(int memberNo);
+
+    int updateMember(int no, String password);
 }

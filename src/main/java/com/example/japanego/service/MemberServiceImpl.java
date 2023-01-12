@@ -30,4 +30,10 @@ public class MemberServiceImpl implements MemberService {
     public void enableMember(int memberNo) {
         memberMapper.updateEnable(memberNo);
     }
+
+    @Override
+    public int updateMember(int no, String password) {
+        String encodedPassword = new BCryptPasswordEncoder().encode(password);
+        return memberMapper.updateMember(no, encodedPassword);
+    }
 }
