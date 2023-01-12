@@ -41,4 +41,10 @@ public class AuthController {
         log.info("passwordReset()...");
         return "password_reset_view";
     }
+
+    @PostMapping("/deleted_account")
+    public String deletedAccount() {
+        log.info("deletedAccount()...");
+        return "deleted_account";
+    }
 }

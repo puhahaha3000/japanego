@@ -36,4 +36,9 @@ public class MemberServiceImpl implements MemberService {
         String encodedPassword = new BCryptPasswordEncoder().encode(password);
         return memberMapper.updateMember(no, encodedPassword);
     }
+
+    @Override
+    public void deleteMember(int no) {
+        memberMapper.delete(no);
+    }
 }

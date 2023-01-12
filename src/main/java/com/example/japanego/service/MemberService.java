@@ -10,4 +10,6 @@ public interface MemberService {
     void enableMember(int memberNo);
 
     int updateMember(int no, String password);
+
+    void deleteMember(int no);
 }

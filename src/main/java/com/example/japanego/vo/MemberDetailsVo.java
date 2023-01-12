@@ -15,12 +15,14 @@ public class MemberDetailsVo implements UserDetails {
     private String email;
     private String password;
     private String certifyFlag;
+    private String delFlag;
     private List<GrantedAuthority> authorities;
 
     public MemberDetailsVo(MemberVo memberVo) {
         setEmail(memberVo.getEmail());
         setPassword(memberVo.getPassword());
         setCertifyFlag(memberVo.getCertifyFlag());
+        setDelFlag(memberVo.getDelFlag());
         setAuthorities(memberVo);
     }
 
@@ -34,6 +36,10 @@ public class MemberDetailsVo implements UserDetails {
 
     private void setCertifyFlag(String certifyFlag) {
         this.certifyFlag = certifyFlag;
+    }
+
+    private void setDelFlag(String delFlag) {
+        this.delFlag = delFlag;
     }
 
     @Override
@@ -68,7 +74,7 @@ public class MemberDetailsVo implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return delFlag.equals("0");
     }
 
     @Override

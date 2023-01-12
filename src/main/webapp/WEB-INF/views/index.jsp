@@ -22,6 +22,7 @@ Index Page<br>
   [<a href="<c:url value="/member/update_view"/>">정보 수정</a>]<br>
   [<a href="<c:url value="/logout"/>">로그아웃</a>]<br>
   [<a href="<c:url value="/first_quiz"/>">첫 퀴즈</a>]<br>
+  [<a href="<c:url value="/member/delete"/>">회원 탈퇴</a>]
 </sec:authorize>
 </body>
 </html>

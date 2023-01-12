@@ -24,4 +24,7 @@ public interface MemberMapper {
 
     @Update("UPDATE MEMBER SET PASSWORD = #{password} WHERE NO = #{no}")
     int updateMember(int no, String password);
+
+    @Update("UPDATE MEMBER SET DEL_FLAG = '1' WHERE NO = #{no}")
+    void delete(int no);
 }

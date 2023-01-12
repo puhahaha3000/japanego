@@ -3,6 +3,8 @@ package com.example.japanego.controller;
 import com.example.japanego.service.AuthInfoService;
 import com.example.japanego.service.MemberService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,5 +40,15 @@ public class MemberController {
     public String updateView() {
         log.info("updateView()...");
         return "member/update_view";
+    }
+
+    @GetMapping("/delete")
+    public String deleteMember() {
+        log.info("deleteMember()...");
+        String email = ((UserDetails) (SecurityContextHolder.getContext().getAuthentication()).getPrincipal()).getUsername();
+        int no = memberService.getNo(email);
+        log.info(no + "");
+        memberService.deleteMember(no);
+        return "redirect:/logout";
     }
 }
