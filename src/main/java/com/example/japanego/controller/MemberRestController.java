@@ -63,4 +63,10 @@ public class MemberRestController {
         memberService.updateMember(no, randomPassword);
         return "New Password : " + randomPassword;
     }
+
+    @PostMapping("/email_confirm/")
+    public String emailConfirm(@RequestParam String email) {
+        log.info("emailConfirm()...");
+        return memberService.searchEmail(email);
+    }
 }

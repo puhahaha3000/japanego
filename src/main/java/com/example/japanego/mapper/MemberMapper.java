@@ -27,4 +27,7 @@ public interface MemberMapper {
 
     @Update("UPDATE MEMBER SET DEL_FLAG = '1' WHERE NO = #{no}")
     void delete(int no);
+
+    @Select("SELECT COUNT(*) FROM MEMBER WHERE EMAIL = #{email}")
+    int search(String email);
 }

@@ -41,4 +41,10 @@ public class MemberServiceImpl implements MemberService {
     public void deleteMember(int no) {
         memberMapper.delete(no);
     }
+
+    @Override
+    public String searchEmail(String email) {
+        int cnt = memberMapper.search(email);
+        return String.valueOf(cnt == 0);
+    }
 }
