@@ -20,8 +20,9 @@ public class MemberController {
 
     @PostMapping("/authenticate")
     public String authenticate(@RequestParam String email) {
-//        memberService.makeAuthenticateStr(email);
-//        memberService.sendAuthenticateEmail(email);
+        log.info("authenticate()...");
+        int memberNo = memberService.getNo(email);
+        memberService.authenticate(memberNo, email);
         return "authenticate";
     }
 }
