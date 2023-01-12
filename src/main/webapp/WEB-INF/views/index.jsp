@@ -13,6 +13,7 @@ Index Page<br>
 <sec:authorize access="isAnonymous()">
   [<a href="<c:url value="/login_view" />">로그인</a>]
   [<a href="<c:url value="/sign_up_view"/>">회원가입</a>]
+  [<a href="<c:url value="/password_reset_view"/>">비밀번호 초기화</a>]
 </sec:authorize>
 
 <sec:authorize access="isAuthenticated()">

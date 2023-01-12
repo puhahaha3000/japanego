@@ -35,4 +35,10 @@ public class AuthController {
         memberService.insertMember(memberVo);
         return "redirect:/";
     }
+
+    @GetMapping("/password_reset_view")
+    public String passwordReset() {
+        log.info("passwordReset()...");
+        return "password_reset_view";
+    }
 }

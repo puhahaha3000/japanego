@@ -5,7 +5,7 @@ import lombok.Data;
 import java.sql.Timestamp;
 
 @Data
-public class AuthNumberVo {
+public class AuthInfoVo {
     int memberNo;
     String no;
     Timestamp createDate;
