@@ -7,6 +7,5 @@ public interface MemberService {
 
     int getNo(String email);
 
-    void authenticate(int memberNo, String email);
-
+    void enableMember(int memberNo);
 }

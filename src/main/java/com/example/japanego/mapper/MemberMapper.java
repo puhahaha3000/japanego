@@ -4,6 +4,7 @@ import com.example.japanego.vo.MemberVo;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface MemberMapper {
@@ -18,6 +19,6 @@ public interface MemberMapper {
     @Select("SELECT NO FROM MEMBER WHERE EMAIL = #{email}")
     int getNo(String email);
 
-    @Insert("INSERT INTO AUTH_NUMBER(MEMBER_NO, NO) VALUES(#{memberNo}, #{no})")
-    void insertAuthNumber(int memberNo, String no);
+    @Update("UPDATE MEMBER SET CERTIFY_FLAG='1' WHERE NO = #{memberNo}")
+    void updateEnable(int memberNo);
 }
