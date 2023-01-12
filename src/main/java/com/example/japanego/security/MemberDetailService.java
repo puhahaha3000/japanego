@@ -24,6 +24,6 @@ public class MemberDetailService implements UserDetailsService {
         log.warn("Load User By MemberVo number: " + email);
         MemberVo memberVo = memberMapper.getMember(email);
         log.info(memberVo.toString());
-        return memberVo == null ? null : new MemberDetailsVo(memberVo);
+        return new MemberDetailsVo(memberVo);
     }
 }
