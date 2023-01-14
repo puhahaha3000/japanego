@@ -27,4 +27,20 @@ public class WordServiceImpl implements WordService {
         }
         return wordVoArrayList;
     }
+
+    @Override
+    public List<WordVo> getWordList(int startNo,int endNo) {
+        log.info("getWordList()...");
+        ArrayList<WordVo> wordVoArrayList = new ArrayList<>();
+        wordVoArrayList.addAll(wordMapper.getWordList(startNo,endNo));
+
+        return wordVoArrayList;
+    }
+
+    @Override
+    public int getAllWordCount() {
+        log.info("getAllWordCount...");
+        return wordMapper.getAllWordCount();
+    }
+
 }

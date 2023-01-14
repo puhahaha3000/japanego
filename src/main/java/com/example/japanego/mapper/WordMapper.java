@@ -8,4 +8,8 @@ import java.util.List;
 @Mapper
 public interface WordMapper {
     List<WordVo> getRandomWord(int num, int grade);
+
+    List<WordVo> getWordList(int startNo,int endNo);
+
+    int getAllWordCount();
 }
