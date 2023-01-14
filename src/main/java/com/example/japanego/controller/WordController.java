@@ -43,6 +43,10 @@ public class WordController {
         //Paging wordPage = new Paging();?? 어케써야하누.. 전체 페이지 불러와야하는건가..?
         //형식이 형한테 상담받아보자.. 용량 졸라먹을것같은데..
 
+
         return wordService.getWordList(paging.getPageBegin(),paging.getPageEnd());
+    };
+    public void testGitHub(){
+        System.out.println("git hub 오류 파악용");
     };
 }
