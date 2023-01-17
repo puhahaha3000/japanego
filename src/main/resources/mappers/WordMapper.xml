@@ -19,10 +19,13 @@
     <select id="getWordList" resultType="WordVo">
        <![CDATA[
         SELECT *
-        FROM ( SELECT *
-               FROM WORD
-               WHERE NO BETWEEN #{startNo} AND #{endNo}
-               ORDER BY NO )
+        FROM (SELECT *
+              FROM word
+              WHERE yomigana LIKE '%'||#{map.yomigana}||'%'
+                 OR hurigana LIKE '%'||#{map.hurigana}||'%'
+                 OR okurigana LIKE '%'||#{map.okurigana}||'%'
+                 OR WORD LIKE '%'||#{map.word}||'%')
+        WHERE ROWNUM BETWEEN 1 AND 3 ORDER BY NO;
         ]]>
     </select>
 

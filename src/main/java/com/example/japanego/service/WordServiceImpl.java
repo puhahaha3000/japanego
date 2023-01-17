@@ -1,12 +1,16 @@
 package com.example.japanego.service;
 
 import com.example.japanego.mapper.WordMapper;
+import com.example.japanego.vo.WordSearchVo;
 import com.example.japanego.vo.WordVo;
+import com.sun.tools.jconsole.JConsoleContext;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @Service
@@ -29,10 +33,13 @@ public class WordServiceImpl implements WordService {
     }
 
     @Override
-    public List<WordVo> getWordList(int startNo,int endNo) {
+    public List<WordVo> getWordList(int startNo,int endNo,String search) {
         log.info("getWordList()...");
         ArrayList<WordVo> wordVoArrayList = new ArrayList<>();
-        wordVoArrayList.addAll(wordMapper.getWordList(startNo,endNo));
+        System.out.println(search+": 서치");
+        WordSearchVo word = new WordSearchVo();
+        word.setWordOption(startNo,endNo,search);
+        wordVoArrayList.addAll(wordMapper.getWordList(word));
 
         return wordVoArrayList;
     }

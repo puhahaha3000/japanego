@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class Paging implements Serializable {
 
     // 페이지당 게시물수
-    public static final int PAGE_SCALE = 10;
+    private int pageScale;
 
     // 화면당 페이지 수
     public static final int BLOCK_SCALE = 5;
@@ -30,10 +30,14 @@ public class Paging implements Serializable {
     private int blockBegin;    // 블록의 시작번호
     private int blockEnd;    // 블록의 끝번호
 
+    public Paging(){}
+
     // 생성자
-    public Paging(int count, int curPage) {
+
+    public void setPaging(int count,int curPage,int pageScale){
         this.curBlock = 1;
         this.curPage = curPage;
+        this.pageScale = pageScale;
         setTotPage(count);
         setPageRange();
         setTotBlock();
@@ -41,8 +45,8 @@ public class Paging implements Serializable {
     }
 
     public void setPageRange() {
-        pageBegin = (curPage - 1) * PAGE_SCALE + 1;
-        pageEnd = pageBegin + PAGE_SCALE - 1;
+        pageBegin = (curPage - 1) * pageScale + 1;
+        pageEnd = pageBegin + pageScale - 1;
     }
 
     public void setBlockRange() {
@@ -68,12 +72,12 @@ public class Paging implements Serializable {
     }
 
     public void setTotPage(int count) {
-        totPage = (int) Math.ceil(count * 1.0 / PAGE_SCALE);
+        totPage = (int) Math.ceil(count * 1.0 / pageScale);
 
         log.info("-----------------setTotPage----------------");
         log.info("count: " + count);
         log.info("TOT_PAGE:" + totPage);
-        log.info("PAGE_SCALE:" + PAGE_SCALE);
+        log.info("pageScale:" + pageScale);
         log.info("-----------------setTotPage----------------");
     }
 

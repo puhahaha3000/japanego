@@ -24,8 +24,7 @@ public class WordController {
     private final MemberService memberService;
     private final AuthInfoService authInfoService;
     private final WordService wordService;
-
-    private Paging paging;
+    private final Paging paging = new Paging();
 
     public WordController(MemberService memberService, AuthInfoService authInfoService,WordService wordService) {
         this.memberService = memberService;
@@ -34,17 +33,11 @@ public class WordController {
     }
 
     @GetMapping("/wordList")
-    public List<WordVo> wordList(@RequestParam int page,@RequestParam String size,@RequestParam String search){
+    public List<WordVo> wordList(@RequestParam int page,@RequestParam int size,@RequestParam String search){
         log.info("wordList()...");
-        int wordCount = wordService.getAllWordCount();
-
-        paging = new Paging(wordCount,page);//이러면 용량 너무 잡아먹지않음..?
-
-        //Paging wordPage = new Paging();?? 어케써야하누.. 전체 페이지 불러와야하는건가..?
-        //형식이 형한테 상담받아보자.. 용량 졸라먹을것같은데..
-
-
-        return wordService.getWordList(paging.getPageBegin(),paging.getPageEnd());
+        int wordCount = wordService.getAllWordCount();//전체 요소 갯수 확인
+        paging.setPaging(wordCount,page,size);//페이징 함수 이용
+        return wordService.getWordList(paging.getPageBegin(),paging.getPageEnd(),search);
     };
     public void testGitHub(){
         System.out.println("git hub 오류 파악용");
