@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.japanego.mapper.WordBankMapper">
+
+    <insert id="insertWord" >
+        <![CDATA[
+            INSERT INTO WORD_WORDBANK_RELATION(NO, WORD_NO, WORDBANK_NO)
+            VALUES (WORD_WORDBANK_RELATION_SEQ.nextval, #{wordNo}, #{wordbankNo})
+        ]]>
+    </insert>
+
+    <delete id="deleteWord">
+        <![CDATA[
+            DELETE FROM WORD_WORDBANK_RELATION
+            WHERE WORD_NO = #{wordNo} AND WORDBANK_NO = #{wordbankNo}
+        ]]>
+    </delete>
+
+    <insert id="insertMemorize" >
+        <![CDATA[
+            INSERT INTO MEMBER_WORD_RELATION(NO, MEMBER_NO, WORD_NO)
+            VALUES (MEMBER_WORD_RELATION_SEQ.nextval, #{memberNo}, #{wordNo})
+        ]]>
+    </insert>
+
+    <delete id="deleteMemorize">
+        <![CDATA[
+            DELETE FROM MEMBER_WORD_RELATION
+            WHERE MEMBER_NO = #{memberNo} AND WORD_NO = #{wordNo}
+        ]]>
+    </delete>
+
+</mapper>
