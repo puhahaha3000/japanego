@@ -8,9 +8,8 @@ import java.io.Serializable;
 @Slf4j
 @Data
 public class Paging implements Serializable {
-
     // 페이지당 게시물수
-    private int pageScale;
+    private static int pageScale;
 
     // 화면당 페이지 수
     public static final int BLOCK_SCALE = 5;

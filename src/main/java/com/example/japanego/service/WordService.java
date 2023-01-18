@@ -9,5 +9,7 @@ public interface WordService {
 
     List<WordVo> getWordList(int startNo,int endNo,String Search);
 
+    List<WordVo> getWordDetail(int wordNo);
+
     int getAllWordCount();
 }

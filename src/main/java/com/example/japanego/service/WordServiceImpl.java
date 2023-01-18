@@ -1,9 +1,7 @@
 package com.example.japanego.service;
 
 import com.example.japanego.mapper.WordMapper;
-import com.example.japanego.vo.WordSearchVo;
 import com.example.japanego.vo.WordVo;
-import com.sun.tools.jconsole.JConsoleContext;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +15,8 @@ import java.util.Map;
 public class WordServiceImpl implements WordService {
 
     private final WordMapper wordMapper;
+
+    private Map<String,Object> wordMap = new HashMap<>();
 
     WordServiceImpl(WordMapper wordMapper) {
         this.wordMapper = wordMapper;
@@ -36,10 +36,20 @@ public class WordServiceImpl implements WordService {
     public List<WordVo> getWordList(int startNo,int endNo,String search) {
         log.info("getWordList()...");
         ArrayList<WordVo> wordVoArrayList = new ArrayList<>();
-        System.out.println(search+": 서치");
-        WordSearchVo word = new WordSearchVo();
-        word.setWordOption(startNo,endNo,search);
-        wordVoArrayList.addAll(wordMapper.getWordList(word));
+        wordMap.clear();
+        wordMap.put("startNo",startNo);
+        wordMap.put("endNo",endNo);
+        wordMap.put("search",search);
+        wordVoArrayList.addAll(wordMapper.getWordList(wordMap));
+
+        return wordVoArrayList;
+    }
+
+    @Override
+    public List<WordVo> getWordDetail(int wordNo){
+        log.info("getWordDetail");
+        ArrayList<WordVo> wordVoArrayList = new ArrayList<>();
+        wordVoArrayList.addAll(wordMapper.getWordDetail(wordNo));
 
         return wordVoArrayList;
     }

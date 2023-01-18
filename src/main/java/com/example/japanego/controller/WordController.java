@@ -37,9 +37,12 @@ public class WordController {
         log.info("wordList()...");
         int wordCount = wordService.getAllWordCount();//전체 요소 갯수 확인
         paging.setPaging(wordCount,page,size);//페이징 함수 이용
+        log.info("시작페이지:"+paging.getPageBegin()+",끝페이지:"+paging.getPageEnd());
         return wordService.getWordList(paging.getPageBegin(),paging.getPageEnd(),search);
     };
-    public void testGitHub(){
-        System.out.println("git hub 오류 파악용");
-    };
+    @GetMapping("/wordDetail")
+    public List<WordVo> wordDetail(@RequestParam int wordNo){
+        log.info("wordDetail()...");
+        return  wordService.getWordDetail(wordNo);
+    }
 }
