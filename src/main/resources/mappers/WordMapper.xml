@@ -16,20 +16,28 @@
         ]]>
     </select>
 
-    <select id="getWordList" resultType="WordVo">
+    <select id="getWordList" parameterType="hashMap" resultType="WordVo">
        <![CDATA[
-        SELECT *
-        FROM (SELECT *
-              FROM word
-              WHERE yomigana LIKE '%'||#{map.yomigana}||'%'
-                 OR hurigana LIKE '%'||#{map.hurigana}||'%'
-                 OR okurigana LIKE '%'||#{map.okurigana}||'%'
-                 OR WORD LIKE '%'||#{map.word}||'%')
-        WHERE ROWNUM BETWEEN 1 AND 3 ORDER BY NO;
+            SELECT *
+            FROM (SELECT ROWNUM AS NUM,word.*
+                  FROM word
+                  WHERE yomigana LIKE '%'||#{search}||'%'
+                     OR hurigana LIKE '%'||#{search}||'%'
+                     OR okurigana LIKE '%'||#{search}||'%'
+                     OR WORD LIKE '%'||#{search}||'%')
+            WHERE NUM BETWEEN #{startNo} AND #{endNo}
         ]]>
     </select>
 
-    <select id="getAllWordCount" resultType="int">
+    <select id="getWordDetail" resultType="WordVo">
+         <![CDATA[
+            SELECT *
+            FROM WORD
+            WHERE no = #{wordNo}
+        ]]>
+    </select>
+
+    <select id="getWordTotalCount" resultType="int">
        <![CDATA[
         SELECT count(*)
         FROM WORD
