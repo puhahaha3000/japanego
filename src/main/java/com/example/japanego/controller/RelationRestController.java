@@ -44,24 +44,28 @@ public class RelationRestController {
         return "단어장에 있는 해당 단어가 삭제되었습니다.";
     }
 
-    @PutMapping("/memorize")
-    public String memorizeAdd(@RequestBody MemberWordRelationVo memberWordRelationVo) {
+    // 단어를 암기 단어에 추가
+    // http://localhost:8282/japanego/relation/word/{no}/member/{no}
+    @PutMapping("/word/{wordNo}/member/{memberNo}")
+    public String memorizeAdd(@PathVariable String wordNo, @PathVariable String memberNo) {
 
         log.info("wordDel() ..");
 
-        // MemberWordRelationVo memberWordRelationVo = new MemberWordRelationVo(2, 10); // Test Code
+        MemberWordRelationVo memberWordRelationVo = new MemberWordRelationVo(wordNo, memberNo);
 
         wordBankService.memorizeAdd(memberWordRelationVo);
 
         return "해당 단어를 암기 단어장에 추가했습니다.";
     }
 
-    @DeleteMapping("/memorize")
-    public String memorizeDel(@RequestBody MemberWordRelationVo memberWordRelationVo) {
+    // 단어를 암기 단어에 제외
+    // http://localhost:8282/japanego/relation/word/{no}/member/{no}
+    @DeleteMapping("/word/{wordNo}/member/{memberNo}")
+    public String memorizeDel(@PathVariable String wordNo, @PathVariable String memberNo) {
 
         log.info("wordDel() ..");
 
-        // MemberWordRelationVo memberWordRelationVo = new MemberWordRelationVo(2, 10); // Test Code
+        MemberWordRelationVo memberWordRelationVo = new MemberWordRelationVo(wordNo, memberNo);
 
         wordBankService.memorizeRemove(memberWordRelationVo);
 

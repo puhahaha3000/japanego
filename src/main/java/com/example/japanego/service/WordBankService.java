@@ -12,6 +12,6 @@ public interface WordBankService {
 
     void wordAdd(WordWordBankRelationVo wordWordBankRelationVo);    // 단어를 단어장에 추가하는 서비스
     void wordRemove(WordWordBankRelationVo wordBankRelationVo);     // 단어를 단어장에 삭제하는 서비스
-    void memorizeAdd(MemberWordRelationVo memberWordRelationVo);
-    void memorizeRemove(MemberWordRelationVo memberWordRelationVo);
+    void memorizeAdd(MemberWordRelationVo memberWordRelationVo);    // 단어를 암기 단어에 추가하는 서비스
+    void memorizeRemove(MemberWordRelationVo memberWordRelationVo); // 단어를 암기 단어에 제외하는 서비스
 }
