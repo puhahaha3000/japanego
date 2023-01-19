@@ -1,8 +1,8 @@
 package com.example.japanego.controller;
 
+import com.example.japanego.service.WordBankRelationService;
 import com.example.japanego.service.WordBankService;
 import com.example.japanego.vo.MemberWordRelationVo;
-import com.example.japanego.vo.WordBankVo;
 import com.example.japanego.vo.WordWordBankRelationVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,62 +14,96 @@ import org.springframework.web.bind.annotation.*;
 public class RelationRestController {
 
     @Autowired
-    private WordBankService wordBankService;
+    private WordBankRelationService wordBankRelationService;
 
-    // 단어장에 단어 추가
     // http://localhost:8282/japanego/relation/word/{no}/bank/{no}
     @PutMapping("/word/{wordNo}/bank/{bankNo}")
-    public String wordAdd(@PathVariable String wordNo, @PathVariable String bankNo) {
+    public boolean wordAdd(@PathVariable String wordNo, @PathVariable String bankNo) {
 
         log.info("wordAdd() ..");
 
-        WordWordBankRelationVo wordWordBankRelationVo = new WordWordBankRelationVo(wordNo,bankNo);
+        boolean result;   // 작업 성공 & 살패 기록
+        int wordNum = Integer.parseInt(wordNo);
+        int bankNum = Integer.parseInt(bankNo);
+        WordWordBankRelationVo wordWordBankRelationVo = new WordWordBankRelationVo(wordNum,bankNum);
 
-        wordBankService.wordAdd(wordWordBankRelationVo);
+        try {
+            wordBankRelationService.addWordToWordBank(wordWordBankRelationVo);
+            result = true;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            result = false;
+        }
 
-        return "단어가 해당 단어장에 추가되었습니다.";
+        return result;
     }
 
-    // 단어장에 단어 식제
     // http://localhost:8282/japanego/relation/word/{no}/bank/{no}
     @DeleteMapping("/word/{wordNo}/bank/{bankNo}")
-    public String wordDel(@PathVariable String wordNo, @PathVariable String bankNo) {
+    public boolean wordDel(@PathVariable String wordNo, @PathVariable String bankNo) {
 
         log.info("wordDel() ..");
 
-        WordWordBankRelationVo wordWordBankRelationVo = new WordWordBankRelationVo(wordNo,bankNo);
+        boolean result;   // 작업 성공 & 살패 기록
+        int wordNum = Integer.parseInt(wordNo);
+        int bankNum = Integer.parseInt(bankNo);
+        WordWordBankRelationVo wordWordBankRelationVo = new WordWordBankRelationVo(wordNum,bankNum);
 
-        wordBankService.wordRemove(wordWordBankRelationVo);
+        try {
+            wordBankRelationService.removeWordFromWordBank(wordWordBankRelationVo);
+            result = true;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            result = false;
+        }
 
-        return "단어장에 있는 해당 단어가 삭제되었습니다.";
+        return result;
     }
 
-    // 단어를 암기 단어에 추가
     // http://localhost:8282/japanego/relation/word/{no}/member/{no}
     @PutMapping("/word/{wordNo}/member/{memberNo}")
-    public String memorizeAdd(@PathVariable String wordNo, @PathVariable String memberNo) {
+    public boolean memorizeAdd(@PathVariable String wordNo, @PathVariable String memberNo) {
 
         log.info("wordDel() ..");
 
-        MemberWordRelationVo memberWordRelationVo = new MemberWordRelationVo(wordNo, memberNo);
+        boolean result;   // 작업 성공 & 살패 기록
+        int wordNum = Integer.parseInt(wordNo);
+        int memberNum = Integer.parseInt(memberNo);
+        MemberWordRelationVo memberWordRelationVo = new MemberWordRelationVo(wordNum, memberNum);
 
-        wordBankService.memorizeAdd(memberWordRelationVo);
-
-        return "해당 단어를 암기 단어장에 추가했습니다.";
+        try {
+            wordBankRelationService.AddMemorizeToMember(memberWordRelationVo);
+            result = true;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            result = false;
+        }
+        return result;
     }
 
-    // 단어를 암기 단어에 제외
     // http://localhost:8282/japanego/relation/word/{no}/member/{no}
     @DeleteMapping("/word/{wordNo}/member/{memberNo}")
-    public String memorizeDel(@PathVariable String wordNo, @PathVariable String memberNo) {
+    public boolean memorizeDel(@PathVariable String wordNo, @PathVariable String memberNo) {
 
         log.info("wordDel() ..");
+        boolean result;   // 작업 성공 & 살패 기록
+        int wordNum = Integer.parseInt(wordNo);
+        int memberNum = Integer.parseInt(memberNo);
+        MemberWordRelationVo memberWordRelationVo = new MemberWordRelationVo(wordNum, memberNum);
 
-        MemberWordRelationVo memberWordRelationVo = new MemberWordRelationVo(wordNo, memberNo);
+        try {
+            wordBankRelationService.memorizeRemoveFromMember(memberWordRelationVo);
+            result = true;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            result = false;
+        }
 
-        wordBankService.memorizeRemove(memberWordRelationVo);
-
-        return "해당 단어를 암기 단어장에서 삭제했습니다.";
+        return result;
     }
 
 }

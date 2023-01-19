@@ -11,9 +11,9 @@ public class MemberWordRelationVo {
     private int memberNo;
     private int wordNo;
 
-    public MemberWordRelationVo(String wordNo, String memberNo) {
+    public MemberWordRelationVo(int wordNo, int memberNo) {
 
-        this.wordNo = Integer.parseInt(wordNo);
-        this.memberNo = Integer.parseInt(memberNo);
+        this.wordNo = wordNo;
+        this.memberNo = memberNo;
     }
 }

@@ -15,8 +15,8 @@ public class WordWordBankRelationVo {
     private Date createDate;
     private Date modifiedDate;
 
-    public WordWordBankRelationVo(String wordNo, String wordbankNo) {
-        this.wordNo = Integer.parseInt(wordNo);
-        this.wordbankNo = Integer.parseInt(wordbankNo);
+    public WordWordBankRelationVo(int wordNo, int wordbankNo) {
+        this.wordNo = wordNo;
+        this.wordbankNo = wordbankNo;
     }
 }

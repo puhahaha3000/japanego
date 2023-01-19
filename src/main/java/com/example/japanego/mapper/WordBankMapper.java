@@ -10,9 +10,4 @@ import java.util.List;
 @Mapper
 public interface WordBankMapper {
 
-    void insertWord(WordWordBankRelationVo wordWordBankRelationVo);
-    void deleteWord(WordWordBankRelationVo wordBankRelationVo);
-
-    void insertMemorize(MemberWordRelationVo memberWordRelationVo);
-    void deleteMemorize(MemberWordRelationVo memberWordRelationVo);
 }
