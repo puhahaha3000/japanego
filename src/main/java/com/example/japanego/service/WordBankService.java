@@ -10,8 +10,8 @@ import java.util.List;
 public interface WordBankService {
     List<WordBankVo> getWordBankList();
 
-    void wordAdd(WordWordBankRelationVo wordWordBankRelationVo);
-    void wordRemove(WordWordBankRelationVo wordBankRelationVo);
+    void wordAdd(WordWordBankRelationVo wordWordBankRelationVo);    // 단어를 단어장에 추가하는 서비스
+    void wordRemove(WordWordBankRelationVo wordBankRelationVo);     // 단어를 단어장에 삭제하는 서비스
     void memorizeAdd(MemberWordRelationVo memberWordRelationVo);
     void memorizeRemove(MemberWordRelationVo memberWordRelationVo);
 }

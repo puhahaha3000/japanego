@@ -16,24 +16,28 @@ public class RelationRestController {
     @Autowired
     private WordBankService wordBankService;
 
-    @PutMapping("/word")
-    public String wordAdd(@RequestBody WordWordBankRelationVo wordWordBankRelationVo) {
+    // 단어장에 단어 추가
+    // http://localhost:8282/japanego/relation/word/{no}/bank/{no}
+    @PutMapping("/word/{wordNo}/bank/{bankNo}")
+    public String wordAdd(@PathVariable String wordNo, @PathVariable String bankNo) {
 
         log.info("wordAdd() ..");
 
-        // WordWordBankRelationVo wordWordBankRelationVo = new wordWordBankRelationVo(10,2); // Test Code
+        WordWordBankRelationVo wordWordBankRelationVo = new WordWordBankRelationVo(wordNo,bankNo);
 
         wordBankService.wordAdd(wordWordBankRelationVo);
 
         return "단어가 해당 단어장에 추가되었습니다.";
     }
 
-    @DeleteMapping("/word")
-    public String wordDel(@RequestBody WordWordBankRelationVo wordWordBankRelationVo) {
+    // 단어장에 단어 식제
+    // http://localhost:8282/japanego/relation/word/{no}/bank/{no}
+    @DeleteMapping("/word/{wordNo}/bank/{bankNo}")
+    public String wordDel(@PathVariable String wordNo, @PathVariable String bankNo) {
 
         log.info("wordDel() ..");
 
-        // WordWordBankRelationVo wordWordBankRelationVo = new WordWordBankRelationVo(10,2); // Test Code
+        WordWordBankRelationVo wordWordBankRelationVo = new WordWordBankRelationVo(wordNo,bankNo);
 
         wordBankService.wordRemove(wordWordBankRelationVo);
 
