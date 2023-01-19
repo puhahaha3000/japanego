@@ -23,6 +23,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
+        http.cors();
+
         http.authorizeHttpRequests()
             .antMatchers("/user/**").hasAnyRole("USER")
             .antMatchers("/**").permitAll()
@@ -38,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 } else if (exception instanceof LockedException) {
                     request.getRequestDispatcher("/deleted_account").forward(request, response);
                 } else {
-                    response.sendRedirect("/login_view");
+                    response.sendRedirect("/japanego/login_view");
                 }
             }))
         .and()
