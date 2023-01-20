@@ -7,9 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Slf4j
 @Service
@@ -17,12 +15,10 @@ public class WordServiceImpl implements WordService {
 
     private final WordMapper wordMapper;
 
-    private final WordSearchParamVo searchWord = new WordSearchParamVo();
-    private final Map<String, Object> wordMap = new HashMap<>();
-
     WordServiceImpl(WordMapper wordMapper) {
         this.wordMapper = wordMapper;
     }
+    private final WordSearchParamVo searchWord = new WordSearchParamVo();
 
     @Override
     public List<WordVo> getFirstQuiz() {
@@ -46,7 +42,7 @@ public class WordServiceImpl implements WordService {
 
     @Override
     public List<WordVo> getWordDetail(int wordNo){
-        log.info("getWordDetail");
+        log.info("getWordDetail()...");
         ArrayList<WordVo> wordVoArrayList = new ArrayList<>();
         wordVoArrayList.addAll(wordMapper.getWordDetail(wordNo));
         return wordVoArrayList;

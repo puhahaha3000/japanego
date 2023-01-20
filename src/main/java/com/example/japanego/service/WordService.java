@@ -12,4 +12,5 @@ public interface WordService {
     List<WordVo> getWordDetail(int wordNo);
 
     int getWordTotalCount();
+
 }

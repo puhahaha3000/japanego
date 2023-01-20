@@ -35,7 +35,6 @@ public class WordRestfulController {
         log.info("시작페이지:" + paging.getPageBegin() + ",끝페이지:" + paging.getPageEnd());
         return wordService.getWordList(paging.getPageBegin(),paging.getPageEnd(),search);
     }
-
     @GetMapping("/wordDetail")
     public List<WordVo> wordDetail(@RequestParam int wordNo){
         log.info("wordDetail()...");
