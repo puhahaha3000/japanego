@@ -1,0 +1,19 @@
+server:
+  port: 8282
+  servlet:
+    context-path: /japanego
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  config:
+    import:
+      - classpath:/config/mail.yml
+      - classpath:/config/datasource.yml
+mybatis:
+  mapper-locations: mappers/**/*.xml
+  type-aliases-package: com.example.japanego.vo
+  configuration:
+    map-underscore-to-camel-case: true
