@@ -7,7 +7,10 @@ import java.util.List;
 public interface WordService {
     List<WordVo> getFirstQuiz();
 
-    List<WordVo> getWordList(int startNo,int endNo);
+    List<WordVo> getWordList(int startNo,int endNo,String Search);
 
-    int getAllWordCount();
+    List<WordVo> getWordDetail(int wordNo);
+
+    int getWordTotalCount();
+
 }

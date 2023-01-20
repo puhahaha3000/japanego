@@ -1,6 +1,7 @@
 package com.example.japanego.service;
 
 import com.example.japanego.mapper.WordMapper;
+import com.example.japanego.vo.WordSearchParamVo;
 import com.example.japanego.vo.WordVo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import java.util.List;
 public class WordServiceImpl implements WordService {
 
     private final WordMapper wordMapper;
+    private final WordSearchParamVo searchWord = new WordSearchParamVo();
 
     WordServiceImpl(WordMapper wordMapper) {
         this.wordMapper = wordMapper;
@@ -29,18 +31,26 @@ public class WordServiceImpl implements WordService {
     }
 
     @Override
-    public List<WordVo> getWordList(int startNo,int endNo) {
+    public List<WordVo> getWordList(int startNo,int endNo,String search) {
         log.info("getWordList()...");
         ArrayList<WordVo> wordVoArrayList = new ArrayList<>();
-        wordVoArrayList.addAll(wordMapper.getWordList(startNo,endNo));
-
+        searchWord.setSearchParam(startNo, endNo, search);
+        wordVoArrayList.addAll(wordMapper.getWordList(searchWord));
         return wordVoArrayList;
     }
 
     @Override
-    public int getAllWordCount() {
+    public List<WordVo> getWordDetail(int wordNo){
+        log.info("getWordDetail()...");
+        ArrayList<WordVo> wordVoArrayList = new ArrayList<>();
+        wordVoArrayList.addAll(wordMapper.getWordDetail(wordNo));
+        return wordVoArrayList;
+    }
+
+    @Override
+    public int getWordTotalCount() {
         log.info("getAllWordCount...");
-        return wordMapper.getAllWordCount();
+        return wordMapper.getWordTotalCount();
     }
 
 }
