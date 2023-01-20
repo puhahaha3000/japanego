@@ -14,11 +14,11 @@ import java.util.List;
 public class WordServiceImpl implements WordService {
 
     private final WordMapper wordMapper;
+    private final WordSearchParamVo searchWord = new WordSearchParamVo();
 
     WordServiceImpl(WordMapper wordMapper) {
         this.wordMapper = wordMapper;
     }
-    private final WordSearchParamVo searchWord = new WordSearchParamVo();
 
     @Override
     public List<WordVo> getFirstQuiz() {
@@ -34,8 +34,7 @@ public class WordServiceImpl implements WordService {
     public List<WordVo> getWordList(int startNo,int endNo,String search) {
         log.info("getWordList()...");
         ArrayList<WordVo> wordVoArrayList = new ArrayList<>();
-        searchWord.clear();
-        searchWord.searchWordSet(startNo, endNo, search);
+        searchWord.setSearchParam(startNo, endNo, search);
         wordVoArrayList.addAll(wordMapper.getWordList(searchWord));
         return wordVoArrayList;
     }

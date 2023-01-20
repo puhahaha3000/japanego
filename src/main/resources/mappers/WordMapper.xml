@@ -29,19 +29,6 @@
         ]]>
     </select>
 
-    <select id="getWordDetail" resultType="WordVo">
-         <![CDATA[
-            SELECT *
-            FROM WORD
-            WHERE no = #{wordNo}
-        ]]>
-    </select>
 
-    <select id="getWordTotalCount" resultType="int">
-       <![CDATA[
-        SELECT count(*)
-        FROM WORD
-        ]]>
-    </select>
 
 </mapper>
