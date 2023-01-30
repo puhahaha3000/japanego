@@ -7,7 +7,7 @@
     <title>로그인 페이지</title>
 </head>
 
-<body onload="document.f.id.focus();">
+<body>
 
 <h3>아이디와 비밀번호를 입력해주세요.</h3>
 

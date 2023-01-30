@@ -12,6 +12,8 @@ spring:
     import:
       - classpath:/config/mail.yml
       - classpath:/config/datasource.yml
+      - classpath:/config/jwt.yml
+
 mybatis:
   mapper-locations: mappers/**/*.xml
   type-aliases-package: com.example.japanego.vo

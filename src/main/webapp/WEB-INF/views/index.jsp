@@ -10,6 +10,10 @@
 </head>
 <body>
 Index Page<br>
+<c:forEach items="${header}" var="item">
+  ${item.key}: ${item.value}<br>
+</c:forEach>
+${header.get("Authorization")}
 <sec:authorize access="isAnonymous()">
   [<a href="<c:url value="/login_view" />">로그인</a>]
   [<a href="<c:url value="/sign_up_view"/>">회원가입</a>]
