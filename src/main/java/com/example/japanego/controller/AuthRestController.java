@@ -2,10 +2,15 @@ package com.example.japanego.controller;
 
 import com.example.japanego.config.JwtTokenUtil;
 import com.example.japanego.security.MemberDetailService;
+import com.example.japanego.vo.JwtResponse;
+import com.example.japanego.vo.MemberVo;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -20,13 +25,13 @@ public class AuthRestController {
         this.memberDetailService = memberDetailService;
     }
 
-//    @PostMapping("/login")
-//    public ResponseEntity<?> createAuthenticationToken(MemberVo memberVo) throws Exception {
-//        authenticate(memberVo.getEmail(), memberVo.getPassword());
-//        final UserDetails userDetails = memberDetailService.loadUserByUsername(memberVo.getEmail());
-//        final String token = jwtTokenUtil.generateToken(userDetails);
-//        return ResponseEntity.ok(token);
-//    }
+    @PostMapping("/authenticate")
+    public ResponseEntity<?> createAuthenticationToken(MemberVo memberVo) throws Exception {
+        authenticate(memberVo.getEmail(), memberVo.getPassword());
+        final UserDetails userDetails = memberDetailService.loadUserByUsername(memberVo.getEmail());
+        final String jwtToken = jwtTokenUtil.generateToken(userDetails);
+        return ResponseEntity.ok(new JwtResponse(jwtToken));
+    }
 
     private void authenticate(String username, String password) throws Exception {
         try {
