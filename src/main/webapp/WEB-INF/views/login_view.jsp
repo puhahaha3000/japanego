@@ -22,6 +22,7 @@
             success: function (json) {
                 console.log(json.token);
                 localStorage.setItem("Authorization", json.token);
+                location.href = "/japanego";
             }
         });
     }
